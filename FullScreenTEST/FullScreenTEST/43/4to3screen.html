@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+  <title>4to3</title>
+</head>
+
+<body>
+  <div>
+    <video id = "fullscreen" controls="controls" src="dfdacc4cd7ee19d27d29b44f1811ae38.mp4">
+    not support video lable.
+    </video>
+  </div>
+  <div>
+    <input type="button" value="Fullscreen" onclick = "fullscreen()">call RequestFullscreen for fullscreen</input>
+  </div>
+  <script type = "text/javascript">
+    var element = document.getElementById("fullscreen");
+    function fullscreen() {
+      element.webkitEnterFullscreen();
+    }
+
+    document.onwebkitfullscreenchange = function(){
+	element.controls=true;
+      if (navigator.vibrate) {
+        //vibrate 1 second
+        navigator.vibrate(1000);
+      } else if (navigator.webkitVibrate) {
+        navigator.webkitVibrate(1000);
+      }
+    }
+
+    document.onwebkitfullscreenerror = function(){
+      if (navigator.vibrate) {
+        //vibrate 1 second
+        navigator.vibrate(1000);
+      } else if (navigator.webkitVibrate) {
+        navigator.webkitVibrate(1000);
+      }
+    }
+  </script>
+</body>
+
+</html>
