@@ -92,13 +92,46 @@
   <br/>
 
   <div id="summary" style="font-size:24px">
-      &emsp;4、Player,媒体播放播放器。这个是播放的核心，也是最复杂的模块。
+      &emsp;4、Player,媒体播放播放器。这个是播放的核心，也是最复杂的模块。chromium的方案如下图：
+  </div>
+
+  <br/>
+
+  <div align = "middle" width = "100%">
+     <img src = "PlayerFN.png" align = "middle" width = "50%" height = "200px"></img>
+  </div>
+
+  <br/>
+
+  <div id="summary" style="font-size:24px">
+    &emsp;WebMediaPlayerImpl是播放器的管理类，创建播放器会先调用GetCurrentFactory获取当前的RendererFactory,默认情况下，FactoryType是DEFAULT，DEFAULT使用Unified Media Pipeline。如果FactoryType设为
+    MEDIA_PLAYER，则使用AndroidPlayer。chromium 55版本以后都默认是Unified Media Pipeline，只有当Unified Media Pipeline发生DEMUXER_ERROR_DETECTED_HLS错误时，chromium会fallback到androidplayer。代码在
+    webmediaplayer_impl.cc、renderer_factory_selector.cc。
+  </div>
+
+  <br/>
+
+  <div id="summary" style="font-size:24px">
+    &emsp;当前UMPipeline的播放能力基本能覆盖主流音视频格式。AndroidmediaPlayer已经基本不再使用。重点研究对象还是UMPipeline。UMPipeline分成个部分：DataSource(源)、Demuxer(分离器)，VideoDecoder(视频解码器)、
+    AudioDecoder(音频解码器)、VideoRenderer(视频渲染)、AudioRenderer(音频渲染)。如下图：
   </div>
 
   <br/>
 
   <div align = "middle" width = "100%">
      <img src = "pipeline.png" align = "middle" width = "80%"></img>
+  </div>
+
+  <br/>
+
+  <div id="summary" style="font-size:24px">
+    &emsp;1、DataSource：
+  </div>
+
+  <br/>
+
+  <div align = "middle" width = "100%">
+     <img src = "PipelineFilter.png" align = "middle" width = "40%" height = "550px"></img>
   </div>
 
   <br/>
