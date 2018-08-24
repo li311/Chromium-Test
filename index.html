@@ -10,14 +10,33 @@
      body {text-align:center;}
      a {font-size:24px;margin:10px;height:100px}
      .article {text-align:left}
+    span{display:none}
   </style>
 </head>
 
 <body>
+    <script type="text/javascript">
+    var u = navigator.userAgent, app = navigator.appVersion;
+    var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Linux') > -1; //g
+    var isIOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+    if (isAndroid) {
+       console.log("android");
+       var style = document.createElement('style');
+       style.type = 'text/css'; ;
+       style.innerHTML="a{ display:none } span{display:block}"; 
+       document.getElementsByTagName('HEAD').item(0).appendChild(style); 
+    }
+    if (isIOS) {
+　　　　  console.log("ios");
+    }
+  </script>
   <h1>chromium学习记录</h1>
   <div id="summary" style="font-size:24px">
       对chromium产生了浓厚的兴趣，自己下了一套代码，以便工作之余学习，在这里记录一下学习过程。
   </div>
+
+  <br/>
+  <span id = "warn">由于排版不好，不支持手机端访问！</span>
 
   <br/> 
 
@@ -34,8 +53,6 @@
   <div>
      <a href = "FullScreenTEST/FullScreenTEST/test.html">test</a></br>
   </div>
-  <script>
-  </script>
 </body>
 
 </html>
