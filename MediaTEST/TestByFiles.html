@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf8">
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+  <title>MediaTEST</title>
+  <style type="text/css">
+     body{text-align:center;}
+     a{font-size:24px;margin:10px;height:100px}
+  </style>
+</head>
+
+<body>
+  <div>
+    <p style = "font-size:26px">video play test</p>
+     <a href = "TestByCodecs.html">Test by Codecs</a></br>
+     <a href = "H265/test.html">H265/HEVC</a></br>
+     <a href = "VP8/test.html">VP8</a></br>
+     <a href = "VP9/test.html">VP9</a></br>
+     <a href = "WebM/test.html">WebM</a></br>
+	 <a href = "Ogg-Theora/test.html">Ogg-Theora</a></br>
+	 
+	 
+     <p style = "font-size:26px">audio play test</p>
+	 <a href = "ACC/test.html">ACC</a></br>
+     <a href = "flac/test.html">flac</a></br>
+     <a href = "mp3/test.html">MP3</a></br>
+     <a href = "OPUS/test.html">OPUS</a></br>
+     <a href = "PCM/test.html">PCM</a></br>
+	 <a href = "Vorbis/test.html">Vorbis</a></br>
+  </div>
+  <script>
+    function jsReadFiles(files) {
+          if (files.length) {
+              var file = files[0];
+              var reader = new FileReader();//new一个FileReader实例
+              if (/text+/.test(file.type)) {//判断文件类型，是不是text类型
+                  reader.onload = function() {
+                      $('body').append('<pre>' + this.result + '</pre>');
+                  }
+                 reader.readAsText(file);
+             } else if(/image+/.test(file.type)) {//判断文件是不是imgage类型
+                 reader.onload = function() {
+                     $('body').append('<img src="' + this.result + '"/>');
+                 }
+                 reader.readAsDataURL(file);
+             }
+         }
+ }
+  </script>
+</body>
+
+</html>
