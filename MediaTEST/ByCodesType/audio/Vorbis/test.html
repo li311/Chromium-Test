@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+  <title>4to3</title>
+</head>
+
+<body>
+  <div>
+    <audio id = "fullscreen" controls="controls" src="vorbis_floor_type_0.ogg">
+    not support audio lable.
+    </audio>
+  </div>
+  <script type = "text/javascript">
+    var element = document.getElementById("fullscreen");
+    function fullscreen() {
+      element.webkitEnterFullscreen();
+    }
+
+    document.onwebkitfullscreenchange = function(){
+      if (navigator.vibrate) {
+        //vibrate 1 second
+        navigator.vibrate(1000);
+      } else if (navigator.webkitVibrate) {
+        navigator.webkitVibrate(1000);
+      }
+    }
+
+    document.onwebkitfullscreenerror = function(){
+      if (navigator.vibrate) {
+        //vibrate 1 second
+        navigator.vibrate(1000);
+      } else if (navigator.webkitVibrate) {
+        navigator.webkitVibrate(1000);
+      }
+    }
+  </script>
+</body>
+
+</html>
